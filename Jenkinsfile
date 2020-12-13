@@ -1,4 +1,5 @@
 def commit_id
+def container_name="jenkins_pipeline"
 pipeline {
     agent any
     
@@ -23,7 +24,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo'Deploying'
-                sh "docker run -p 8081:8080 app-nodejs:${commit_id}"
+                sh "docker stop  ${container_name}"
+                sh "docker run -d --rm -p 8081:8080 --name ${container_name} app-nodejs:${commit_id}"
                 echo 'deployment complete'
                 
             }
