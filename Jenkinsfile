@@ -23,7 +23,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo'Deploying'
-                sh "docker run -d -p 8081:8080 app-nodejs:${commit_id}"
+                sh "docker run -p 8081:8080 app-nodejs:${commit_id}"
                 echo 'deployment complete'
                 
             }
