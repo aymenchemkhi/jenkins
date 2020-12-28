@@ -24,7 +24,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo'Deploying'
-                sh "docker stop  ${container_name}"
+                //sh "docker stop  ${container_name}"
                 sh "docker run -d --rm -p 8081:8080 --name ${container_name} app-nodejs:${commit_id}"
                 echo 'deployment complete'
                 
